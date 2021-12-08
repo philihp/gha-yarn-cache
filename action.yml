@@ -2,10 +2,15 @@ name: 'Yarn install cache'
 author: 'c-hive'
 description: '1-liner yarn install cache for GitHub Actions'
 inputs:
+  working-directory:
+    description: 'Directory containing yarn.lock'
+    required: false
+    default: '.'
   directory:
     description: 'Directory containing yarn.lock'
     required: false
     default: '.'
+    deprecationMessage: 'Use "working-directory", rather than "directory"'
 runs:
   using: 'node12'
   main: 'dist/restore/index.js'

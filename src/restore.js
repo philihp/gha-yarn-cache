@@ -43,10 +43,10 @@ async function run() {
   const cachePath = await yarnCache();
   core.saveState("YARN_CACHE_PATH", cachePath);
 
-  const directory = core.getInput("directory") || core.getInput("working-directory")
-
   core.info(`DIRECTORY: ${core.getInput("directory")}`)
-  core.info(`DIRECTORY: ${core.getInput("working-directory")}`)
+  core.info(`WORKING-DIRECTORY: ${core.getInput("working-directory")}`)
+  const directory = core.getInput("working-directory") || core.getInput("directory")
+
   const hash = md5File.sync(`${directory}/yarn.lock`);
 
   const primaryKey = `${os}-yarn-cache-${hash}`;
